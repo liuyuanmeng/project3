@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+// import { Button, useColorMode } from '@chakra-ui/react'
 
 import { useParams, Link, useNavigate } from 'react-router-dom'
 
 import { userIsAuthenticated, getTokenFromLocalStorage } from '../helpers/auth'
 import Spinner from '../utilities/Spinner'
 
+
 const Account = () => {
+  // const { colorMode, toggleColorMode } = useColorMode()
   const navigate = useNavigate()
-  // const { accountId } = useParams()
+
   const [account, setAccount] = useState('')
   const [errors, setErrors] = useState(false)
 
@@ -38,6 +41,10 @@ const Account = () => {
 
   return (
     <section>
+      {/* <Button onClick={toggleColorMode}>
+        Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+      </Button> */}
+
 
 
       <h1 className='text-center mt-5'>Account Dashboard</h1>
@@ -60,7 +67,7 @@ const Account = () => {
               </div>
             </div>
           </div>
-        
+
         </div>
       </div>
 

@@ -3,12 +3,14 @@ import express from 'express'
 import router from './config/router.js'
 import 'dotenv/config'
 
+
 const logger = (req, res, next) => {
-  console.log(`🚨 - Incoming request on ${req.method} - ${req.url}`)
+  (`🚨 - Incoming request on ${req.method} - ${req.url}`)
   next()
 }
 
 const startServer = async () => {
+  
 
   const app = express()
 

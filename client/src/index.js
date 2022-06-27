@@ -4,5 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './styles/main.scss'
 import App from './App'
 import 'bootstrap/dist/css/bootstrap.css'
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
 
-createRoot(document.getElementById('root')).render(<App />)
+
+createRoot(document.getElementById('root')).render(<ChakraProvider>
+  <ColorModeScript initialColorMode='light'/>
+  <App /></ChakraProvider>)

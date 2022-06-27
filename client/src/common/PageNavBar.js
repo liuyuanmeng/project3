@@ -6,12 +6,15 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import { userIsAuthenticated } from '../helpers/auth'
 import logo from './../images/home.png'
+import { VStack, IconButton, useColorMode } from '@chakra-ui/react'
+import { FaRegSun, FaRegMoon } from 'react-icons/fa'
 
 const PageNavbar = () => {
+  const { colorMode, toggleColorMode } = useColorMode()
 
-  const [ term, setTerm ] = useState('')
+  const [term, setTerm] = useState('')
   const [errors, setErrors] = useState(false)
-  
+
   const navigate = useNavigate()
   // console.log(userIsAuthenticated())
 
@@ -31,42 +34,48 @@ const PageNavbar = () => {
     try {
       navigate(`/books/search/${term}`)
     } catch (error) {
-      console.log(error)
-      console.log(error.response.data)
+
       setErrors(error.response.data)
     }
   }
 
 
   return (
-    <Navbar  expand="lg navbar-dark">
+  // <VStack>
+
+    <Navbar expand="lg navbar-dark">
+
 
       <Container>
+       
+
 
         <Navbar.Brand as={Link} to='/'>
-          
-          <img src={logo}/>
-         
+
+          <img src={logo} />
+
+
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        
+
+
         <form className='form-inline '>
           <input type="text" name="searchTerm" placeholder='🔍Search Book or Author here...' onChange={handleChange} />
           <button type="submit" className="btn btn-outline-dark btn-sm" onClick={handleSubmit}>Search</button>
- 
+
         </form>
 
         <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
 
-          
+
           {/* <Nav.Link as={Link} to="/books">Books</Nav.Link> */}
           {userIsAuthenticated() ?
             <>
               <Nav.Link as={Link} to="/account">Account</Nav.Link>
               <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
               <Nav.Link as={Link} to="/account/wishlist">♥️Wish List</Nav.Link>
-              
+
             </>
 
             :
@@ -77,11 +86,17 @@ const PageNavbar = () => {
           }
 
         </Navbar.Collapse>
+        <IconButton icon={colorMode === 'light' ? <FaRegSun /> : <FaRegMoon />} isRound='true' size='sm' alignSelf='flex-end' ml='3.5'
+          onClick={toggleColorMode}
+        />
+
       </Container>
-    </Navbar> 
+
+    </Navbar>
+    // </VStack>
   )
 
-   
+
 }
 
 export default PageNavbar
