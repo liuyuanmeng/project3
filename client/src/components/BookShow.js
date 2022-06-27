@@ -3,7 +3,6 @@ import axios from 'axios'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ReviewDisplay } from './ReviewDisplay'
 import { SimilarBookDisplay } from './SimilarBookDisplay'
-
 // slider
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
@@ -249,7 +248,7 @@ const BookShow = () => {
             <div className='reviews-display-box'>
               {
                 reviews.map((review) => {
-                  return <ReviewDisplay key={review.id} review={review} handleDeleteBtn={handleDeleteBtn} />
+                  return <ReviewDisplay key={review.id} review={review} />
                 })
               }
             </div>
